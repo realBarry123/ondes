@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home socket={socket}/>} />
           <Route exact path="/host" element={<Host socket={socket}/>} />
-          <Route exact path="/join" element={<Play socket={socket}/>} />
+          <Route exact path="/play" element={<Play socket={socket}/>} />
         </Routes>
       </Router>
     </div>

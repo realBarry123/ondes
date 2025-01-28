@@ -6,5 +6,5 @@ const Host = () => {
         </div>
     );
 }
- 
+
 export default Host;
