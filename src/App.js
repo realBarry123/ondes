@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import Home from "./components/Home.js";
 import Host from "./components/Host.js";
 import Play from "./components/Play.js";
