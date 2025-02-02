@@ -3,18 +3,41 @@ import { useState, useEffect } from "react";
 const Host = ({ socket }) => {
 
     const [roomCode, setRoomCode] = useState("");
-    
+    const [members, setMembers] = useState([]);
+
     useEffect(() => {
         socket.emit("new-host", true);
     }, []);
 
-    socket.on("host-code", (code) => {
-        setRoomCode(code);
-    })
+    useEffect(() => {
+        const onJoinSuccess = (id) => {
+            setMembers(prevIds => [...prevIds, id]);
+        }
+
+        const onHostCode = (code) => {
+            setRoomCode(code);
+        }
+
+        socket.on("join-success", onJoinSuccess);
+
+        socket.on("host-code", onHostCode);
+
+        return () => {
+            socket.off("join-success", onJoinSuccess);
+            socket.off("host-code", onHostCode);
+        }
+    }, [socket]);
+
+    useEffect(() => {
+        console.log("Updated members list:", members);
+    }, [members]); // Runs whenever `members` changes
 
     return ( 
         <div className="host">
             <p>{roomCode}</p>
+            {members.map(item => {
+                <li>{item}</li>
+            })}
         </div>
     );
 }
