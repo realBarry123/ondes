@@ -10,16 +10,18 @@ const Host = ({ socket }) => {
     }, []);
 
     useEffect(() => {
+
+        // When someone succeeds in joining the room
         const onJoinSuccess = (id) => {
             setMembers(prevIds => [...prevIds, id]);
         }
 
+        // When the room code is sent to the host
         const onHostCode = (code) => {
             setRoomCode(code);
         }
 
         socket.on("join-success", onJoinSuccess);
-
         socket.on("host-code", onHostCode);
 
         return () => {
@@ -35,9 +37,9 @@ const Host = ({ socket }) => {
     return ( 
         <div className="host">
             <p>{roomCode}</p>
-            {members.map(item => {
+            {members.map(item => { return (
                 <li>{item}</li>
-            })}
+            )})}
         </div>
     );
 }
