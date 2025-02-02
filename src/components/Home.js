@@ -13,8 +13,10 @@ const Home = ({ socket }) => {
     }
     
     useEffect(() => {
-        socket.on("join-success", () => {
-            navigate("/play");
+        socket.on("join-success", (id) => {
+            if (socket.id == id){
+                navigate("/play", { replace: true });
+            }
         })
     }, [socket]);
 

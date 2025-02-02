@@ -43,7 +43,7 @@ io.on("connection", (socket) => {
     console.log("Received join code: " + code);
     if (rooms.indexOf(code) >= 0){
       socket.join(code);
-      io.to(code).emit("join-success");
+      io.to(code).emit("join-success", socket.id);
     }
     console.log(rooms);
     console.log(socket.rooms);
