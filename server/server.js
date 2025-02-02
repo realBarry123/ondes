@@ -48,8 +48,12 @@ io.on("connection", (socket) => {
     console.log(rooms);
     console.log(socket.rooms);
   })
+
+  socket.on("sound", (note) => {
+    io.emit("sound", note);
+  })
 });
 
-server.listen(4000, () => {
+server.listen(4000, "0.0.0.0", () => {
   console.log("Server running on port 4000");
 });
