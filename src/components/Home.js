@@ -13,11 +13,18 @@ const Home = ({ socket }) => {
     }
     
     useEffect(() => {
-        socket.on("join-success", (id) => {
+
+        // When the join code is verified by the server
+        const onJoinSuccess = (id) => {
             if (socket.id == id){
-                navigate("/play", { replace: true });
+                navigate("/play", { replace: true }); // Go to play
             }
-        })
+        }
+        socket.on("join-success", onJoinSuccess);
+
+        return () => {
+            socket.off("join-success", onJoinSuccess);
+        }
     }, [socket]);
 
     return (
