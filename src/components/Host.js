@@ -44,7 +44,7 @@ const Host = ({ socket }) => {
         console.log("Updated members list:", members);
     }, [members]); // Runs whenever `members` changes
 
-    const startTone = () => {
+    const startTone = () => { // Turn on Tone.js
         Tone.start();
         setAudioStarted(true);
     }

@@ -16,7 +16,7 @@ const Home = ({ socket }) => {
 
         // When the join code is verified by the server
         const onJoinSuccess = (id) => {
-            if (socket.id == id){
+            if (socket.id === id){
                 navigate("/play", { replace: true }); // Go to play
             }
         }
