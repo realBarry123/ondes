@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const Home = ({ socket }) => {
 
@@ -11,6 +11,16 @@ const Home = ({ socket }) => {
     const submitJoin = (code) => {
         socket.emit("join-code", code);
     }
+
+    const toHost = () => {
+        navigate("/host", { replace: true });
+    }
+
+    const setInputRef = useCallback((node) => {
+        if (node) {
+          node.focus(); // Focus only when the input is mounted
+        }
+      }, []);
     
     useEffect(() => {
 
@@ -30,11 +40,19 @@ const Home = ({ socket }) => {
     return (
         <div className="home">
             <h1>ONDES</h1>
-            <Link to="/host">Host</Link>
-            <button onClick={() => {setJoinOn(!joinOn)}}>Join</button>
+            <button 
+                onClick={toHost} 
+                style={{borderRight: "0.5px solid #ffff"}}
+            >Host</button>
+            
+            <button 
+                onClick={() => {setJoinOn(!joinOn)}} 
+                style={{borderLeft: "0.5px solid #ffff"}}
+            >Join</button>
 
             {joinOn && <div>
                 <input 
+                    ref={setInputRef}
                     type="text" 
                     value={codeInput}
                     onChange={(e) => setCodeInput(e.target.value)}
