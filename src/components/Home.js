@@ -40,21 +40,23 @@ const Home = ({ socket }) => {
     return (
         <div className="home">
             <h1>ONDES</h1>
+            <h3>Created by Barry Yu</h3>
             <button 
                 onClick={toHost} 
-                style={{borderRight: "0.5px solid #ffff"}}
-            >Host</button>
+                style={{borderRight: "0.5px solid #ffff", width: "120px"}}
+            >Create New</button>
             
             <button 
                 onClick={() => {setJoinOn(!joinOn)}} 
-                style={{borderLeft: "0.5px solid #ffff"}}
-            >Join</button>
+                style={{borderLeft: "0.5px solid #ffff", width: "120px"}}
+            >Join Ensemble</button>
 
             {joinOn && <div>
                 <input 
                     ref={setInputRef}
                     type="text" 
                     value={codeInput}
+                    placeholder="Join Code"
                     onChange={(e) => setCodeInput(e.target.value)}
                 />
                 <button onClick={() => {submitJoin(codeInput)}}>Submit</button>

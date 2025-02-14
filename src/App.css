@@ -10,15 +10,24 @@ body {
 
 @keyframes title {
   0% {margin-top: 150px}
-  50% {margin-top: 100px}
+  50% {margin-top: 130px}
   100% {margin-top: 150px}
 }
 
 h1 {
   font-size: 50px;
+  font-family: "Palatino";
+  font-weight: lighter;
+  letter-spacing: 5px;
   animation-name: title;
-  animation-duration: 6s;
+  animation-duration: 12s;
   animation-iteration-count: infinite;
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: 16px;
+  margin-bottom: 50px;
 }
 
 button, a {
@@ -27,31 +36,29 @@ button, a {
   border: solid 1px;
   border-color: #00000000; 
   color: #ffffff;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   transition: border-color 0.5s, padding-left 0.5s, padding-right 0.5s;
-  font-size: 20px;
+  font-size: 16px;
   height: 32px; 
 }
 
 button:hover, a:hover {
   border-color: #ffffff;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   cursor: pointer;
 }
 
 button:active, a:active {
   border-color: #ffffff;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 input {
   all: unset;
-  border: solid 1px #ffffff;
-  border-left: none;
-  border-right: none;
+  border-bottom: solid 1px #ffffff;
   background-color: #041717;
   color: #ffffff;
   padding: 5px;
