@@ -29,3 +29,5 @@ README.react.md
 # Ignore test files (for now)
 src/App.test.js
 src/setupTests.js
+
+.env
