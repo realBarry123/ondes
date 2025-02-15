@@ -58,10 +58,11 @@ button:active, a:active {
 
 input {
   all: unset;
+  letter-spacing: 5px;
   border-bottom: solid 1px #ffffff;
   background-color: #041717;
   color: #ffffff;
-  padding: 5px;
+  padding: 2px;
   margin-top: 10px;
   height: 32px;
 }
