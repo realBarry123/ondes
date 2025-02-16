@@ -1,6 +1,6 @@
 # Ondes
 ## About
-A sound-based multiplayer game. The game is currently in prototyping stage. See branch [proto/join-rooms](https://github.com/realBarry123/ondes/tree/proto/join-rooms).
+A sound-based multiplayer game. It just barely works, you could say it's in the pre-alpha stage.
 ### Built With
 * [React](https://react.dev/)
 * [Socket.IO](https://socket.io/)
