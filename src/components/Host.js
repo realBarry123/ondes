@@ -51,7 +51,7 @@ const Host = ({ socket }) => {
 
     return ( 
         <div className="host">
-            {!audioStarted && <button onClick={startTone}>Start Audio</button>}
+            {!audioStarted && <button onClick={startTone}>start audio</button>}
             <p>{roomCode}</p>
             {members.map(item => { return (
                 <li>{item}</li>

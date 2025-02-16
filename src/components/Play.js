@@ -5,7 +5,7 @@ const Play = ({ socket }) => {
     }
     return ( 
         <div className="play">
-            <button onClick={sendSound}>Send Sound</button>
+            <button onClick={sendSound}>send sound</button>
         </div>
     );
 }

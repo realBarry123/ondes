@@ -40,8 +40,8 @@ const Home = ({ socket }) => {
     return (
         <div className="home">
             <h1>Ondes</h1>
-            <h3>Created by Barry Yu</h3>
-            
+            <h3>created by Barry Yu</h3>
+
             {!joinOn && <div>
                 <button 
                     onClick={toHost} 
