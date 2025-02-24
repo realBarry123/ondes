@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+  --color-background: #001418;
+  --color-foreground: #fffff0;
+  --color-secondary: #104038;
+}
+
 .App {
   text-align: center;
   font-family: "Quicksand";
 }
 
 body {
-  background-color: #041717;
-  color: #ffffff;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 @keyframes title {
@@ -16,6 +24,7 @@ body {
 
 h1 {
   font-size: 50px;
+  /*color: var(--color-secondary);*/
   font-family: "Palatino";
   font-weight: lighter;
   letter-spacing: 5px;
@@ -35,10 +44,10 @@ button, a {
   background-color: #00000000;
   border: solid 1px;
   border-color: #00000000; 
-  color: #ffffff;
+  color: var(--color-foreground);
   padding-left: 20px;
   padding-right: 20px;
-  transition: border-color 0.5s, padding-left 0.5s, padding-right 0.5s;
+  transition: border-color 0.5s, padding-left 0.5s, padding-right 0.5s, background-color 0.5s;
   font-size: 16px;
   height: 32px; 
 }

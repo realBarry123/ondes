@@ -16,9 +16,10 @@ const Home = ({ socket }) => {
         navigate("/host", { replace: true });
     }
 
+    // Focus input bar
     const setInputRef = useCallback((node) => {
         if (node) {
-          node.focus(); // Focus only when the input is mounted
+          node.focus();
         }
       }, []);
     
