@@ -26,9 +26,10 @@ const Home = ({ socket }) => {
     useEffect(() => {
 
         // When the join code is verified by the server
-        const onJoinSuccess = (id) => {
+        const onJoinSuccess = ({ id, instrument }) => {
+            console.log(instrument);
             if (socket.id === id){
-                navigate("/play", { replace: true }); // Go to play
+                navigate("/play", { replace: true, state: { instrument: instrument }});
             }
         }
         socket.on("join-success", onJoinSuccess);

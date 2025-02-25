@@ -1,5 +1,9 @@
+import { useLocation } from "react-router-dom";
 
 const Play = ({ socket }) => {
+    const { instrument } = useLocation().state;
+
+    console.log(instrument);
     const sendSound = () => {
         socket.emit("sound", "C4");
     }

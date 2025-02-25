@@ -16,12 +16,13 @@ const Host = ({ socket }) => {
     useEffect(() => {
 
         // When someone succeeds in joining the room
-        const onJoinSuccess = (id) => {
+        const onJoinSuccess = ({ id }) => {
             setMembers(prevIds => [...prevIds, id]);
         }
 
         // When the room code is sent to the host
         const onHostCode = (code) => {
+            console.log("Your code is: " + code);
             setRoomCode(code);
         }
 
