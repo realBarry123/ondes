@@ -16,8 +16,12 @@ const Host = ({ socket }) => {
     useEffect(() => {
 
         // When someone succeeds in joining the room
-        const onJoinSuccess = ({ id }) => {
-            setMembers(prevIds => [...prevIds, id]);
+        const onJoinSuccess = ({ id, instrument }) => {
+            setMembers(prevMembers => [...prevMembers, {id: id, instrument: instrument}]);
+        }
+
+        const onLeave = (id) => {
+            setMembers(prevMembers => prevMembers.filter(member => member.id !== id));
         }
 
         // When the room code is sent to the host
@@ -33,11 +37,13 @@ const Host = ({ socket }) => {
         socket.on("join-success", onJoinSuccess);
         socket.on("host-code", onHostCode);
         socket.on("sound", onSound);
+        socket.on("leave", onLeave);
 
         return () => {
             socket.off("join-success", onJoinSuccess);
             socket.off("host-code", onHostCode);
             socket.off("sound", onSound);
+            socket.off("leave", onLeave);
         }
     }, [socket]);
 
@@ -55,7 +61,7 @@ const Host = ({ socket }) => {
             {!audioStarted && <button onClick={startTone}>start audio</button>}
             <p>{roomCode}</p>
             {members.map(item => { return (
-                <li>{item}</li>
+                <li>{item.instrument}</li>
             )})}
         </div>
     );

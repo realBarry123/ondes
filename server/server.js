@@ -15,6 +15,11 @@ const generateId = () => {
   return Math.random().toString(36).substring(2, 6);
 }
 
+const randInstrument = () => {
+  instruments = ["phon", "lung"];
+  return instruments[Math.floor(Math.random() * instruments.length)];
+}
+
 const io = new Server(server, {
     cors: {
         origin: "*", // Your React app's URL
@@ -26,13 +31,17 @@ io.on("connection", (socket) => {
   console.log("A user connected");
   
   socket.on("message", (msg) => {
-    console.log("Message from client:", msg);
+    console.log("RECEIVE message ", msg);
     io.emit("message", msg);
   });
 
-  socket.on("disconnect", () => console.log("User disconnected"));
+  socket.on("disconnect", () => {
+    console.log("RECEIVE disconnect");
+    io.emit("leave", socket.id);
+  });
 
   socket.on("new-host", () => {
+    console.log("RECEIVE new-host");
     const newId = generateId();
     rooms.push(newId);
     socket.join(newId);
@@ -40,16 +49,17 @@ io.on("connection", (socket) => {
   })
 
   socket.on("join-code", (code) => {
-    console.log("Received join code: " + code);
+    console.log("RECEIVE join-code " + code);
     if (rooms.indexOf(code) >= 0){
       socket.join(code);
-      io.to(code).emit("join-success", { id: socket.id, instrument: "organ" });
+      io.to(code).emit("join-success", { id: socket.id, instrument: randInstrument() });
     }
     console.log(rooms);
     console.log(socket.rooms);
   })
 
   socket.on("sound", (note) => {
+    console.log("RECEIVE sound " + note);
     io.emit("sound", note);
   })
 });

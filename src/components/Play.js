@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import Phon from "./instruments/Phon";
 
 const Play = ({ socket }) => {
     const { instrument } = useLocation().state;
