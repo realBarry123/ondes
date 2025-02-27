@@ -46,11 +46,13 @@ const Home = ({ socket }) => {
 
             {!joinOn && <div>
                 <button 
+                    className="ui-button"
                     onClick={toHost} 
                     style={{borderRight: "0.5px solid #ffff", width: "120px"}}
                 >create new</button>
                 
                 <button 
+                    className="ui-button"
                     onClick={() => {setJoinOn(!joinOn)}} 
                     style={{borderLeft: "0.5px solid #ffff", width: "120px"}}
                 >join ensemble</button>
@@ -65,6 +67,7 @@ const Home = ({ socket }) => {
                     onChange={(e) => setCodeInput(e.target.value)}
                 />
                 <button 
+                    className="ui-button"
                     onClick={() => {submitJoin(codeInput)}}
                     style={{marginLeft: "10px"}}
                 >submit</button>

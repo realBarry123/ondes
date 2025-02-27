@@ -58,8 +58,13 @@ const Host = ({ socket }) => {
 
     return ( 
         <div className="host">
-            {!audioStarted && <button onClick={startTone}>start audio</button>}
+            {!audioStarted && <button 
+                className="ui-button"
+                onClick={startTone}
+            >start audio</button>}
+
             <p>{roomCode}</p>
+            
             {members.map(item => { return (
                 <li>{item.instrument}</li>
             )})}
