@@ -64,7 +64,7 @@ const Host = ({ socket }) => {
             >start audio</button>}
 
             <p>{roomCode}</p>
-            
+
             {members.map(item => { return (
                 <li>{item.instrument}</li>
             )})}

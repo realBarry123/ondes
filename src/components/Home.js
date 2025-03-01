@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
+import ToneTest from "./ToneTest";
 
 const Home = ({ socket }) => {
 
@@ -72,8 +73,7 @@ const Home = ({ socket }) => {
                     style={{marginLeft: "10px"}}
                 >submit</button>
             </div>}
-
-
+            <ToneTest />
         </div>
     );
 }
