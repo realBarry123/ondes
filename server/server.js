@@ -16,7 +16,8 @@ const generateId = () => {
 }
 
 const randInstrument = () => {
-  instruments = ["phon", "lung"];
+  return "lith";
+  instruments = ["phon", "lung", "lith"];
   return instruments[Math.floor(Math.random() * instruments.length)];
 }
 
