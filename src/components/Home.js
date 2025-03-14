@@ -73,7 +73,6 @@ const Home = ({ socket }) => {
                     style={{marginLeft: "10px"}}
                 >submit</button>
             </div>}
-            <ToneTest />
         </div>
     );
 }
