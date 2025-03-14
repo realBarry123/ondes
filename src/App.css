@@ -53,16 +53,29 @@ h3 {
 }
 
 .ui-button:hover {
-  border-color: #ffffff;
+  border-color: var(--color-foreground);
   padding-left: 30px;
   padding-right: 30px;
   cursor: pointer;
 }
 
 .ui-button:active {
-  border-color: #ffffff;
+  border-color: var(--color-foreground);
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.key-button {
+  all: unset;
+  background-color: #00000000;
+  border: solid 1px;
+  border-color: var(--color-foreground);
+  transition: background-color 0.5s;
+  margin: 5px;
+}
+
+.key-button:active {
+  background-color: var(--color-foreground);
 }
 
 input {
@@ -75,3 +88,12 @@ input {
   margin-top: 10px;
   height: 32px;
 }
+/*
+.key-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+  */
