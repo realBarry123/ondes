@@ -1,8 +1,10 @@
 import * as Tone from "tone";
 
-import { percussiveSynth } from "../Synths";
+import { createPercussiveSynth } from "../Synths";
 
 const ToneTest = () => {
+
+    const percussiveSynth = createPercussiveSynth();
 
     const playSound = () => {
         percussiveSynth.triggerAttackRelease(["C3", "F#3", "C4", "D4", "E4", "F4", "F#4", "G#4", "A#4", "B4", "C5"][Math.floor(Math.random() * 11)], "1n", Tone.now());

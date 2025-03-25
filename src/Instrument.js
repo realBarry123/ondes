@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import { percussiveSynth } from "./Synths";
+import { createPercussiveSynth } from "./Synths";
 import Lith from "./components/instruments/Lith";
 
 class Instrument {
@@ -12,19 +12,19 @@ class Instrument {
         this.name = instrumentName;
         if (instrumentName == "lith") {
             this.type = "percussive";
-            this.synth = percussiveSynth;
+            this.synth = createPercussiveSynth();
             this.getJSX = (sendSound) => {
                 return (<Lith sendSound={sendSound}/>);
             }
         }
     }
 
-    play(note, duration) {
+    play(note) {
         if (this.type == "percussive") {
-            this.synth.triggerAttackRelease(note, duration, Tone.now());
+            this.synth.triggerAttackRelease(note, "8n", Tone.now());
         }
         else if (this.type == "sustained") {
-            this.synth.triggerAttack(note, duration, Tone.now());
+            this.synth.triggerAttack(note, "8n", Tone.now());
         }
     }
 

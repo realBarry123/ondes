@@ -1,6 +1,3 @@
-import { Instrument } from "../../Instrument";
-import * as Tone from "tone";
-import { percussiveSynth } from "../../Synths";
 
 const Lith = ({ sendSound }) => {
     
@@ -24,8 +21,6 @@ const Lith = ({ sendSound }) => {
         e.preventDefault();
         sendSound(pitch)
     }
-
-    const instrument = new Instrument("percussive", percussiveSynth);
 
     return (
         <div className="lith">

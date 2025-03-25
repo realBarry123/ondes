@@ -9,7 +9,8 @@ const Play = ({ socket }) => {
     useEffect(() => {
         const onChangeGain = ({id, value}) => {
             if (id == socket.id){
-                console.log(value);
+                console.log(instrument.synth.volume.value);
+                instrument.synth.volume.value = value;
             }
         }
 
