@@ -47,22 +47,27 @@ io.on("connection", (socket) => {
     rooms.push(newId);
     socket.join(newId);
     io.to(newId).emit("host-code", newId);
-  })
+  });
 
   socket.on("join-code", (code) => {
     console.log("RECEIVE join-code " + code);
     if (rooms.indexOf(code) >= 0){
       socket.join(code);
-      io.to(code).emit("join-success", { id: socket.id, instrument: randInstrument() });
+      io.to(code).emit("join-success", { id: socket.id, instrumentName: randInstrument() });
     }
     console.log(rooms);
     console.log(socket.rooms);
-  })
+  });
 
-  socket.on("sound", (note) => {
+  socket.on("sound", ({ id, note }) => {
     console.log("RECEIVE sound " + note);
-    io.emit("sound", note);
-  })
+    io.emit("sound", {id: id, note: note});
+  });
+
+  socket.on("change-gain", ({id, value}) => {
+    console.log("RECEIVE change-gain " + id + ", " + value)
+    io.emit("change-gain", {id, value});
+  });
 });
 
 server.listen(4000, "0.0.0.0", () => {

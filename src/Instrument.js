@@ -1,11 +1,22 @@
 import * as Tone from "tone";
+import { percussiveSynth } from "./Synths";
+import Lith from "./components/instruments/Lith";
 
 class Instrument {
     type;
     synth;
-    constructor(type, synth) {
-        this.type = type;
-        this.synth = synth;
+    html;
+    name;
+
+    constructor(instrumentName) {
+        this.name = instrumentName;
+        if (instrumentName == "lith") {
+            this.type = "percussive";
+            this.synth = percussiveSynth;
+            this.getJSX = (sendSound) => {
+                return (<Lith sendSound={sendSound}/>);
+            }
+        }
     }
 
     play(note, duration) {

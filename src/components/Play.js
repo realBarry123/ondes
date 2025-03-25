@@ -1,26 +1,42 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Phon from "./instruments/Phon";
-import Lung from "./instruments/Lung";
-import Lith from "./instruments/Lith";
+import { Instrument } from "../Instrument";
 
 const Play = ({ socket }) => {
-    const { instrument } = useLocation().state;
+    const { instrumentName } = useLocation().state;
+    const instrument = new Instrument(instrumentName);
 
-    console.log(instrument);
-    const sendSound = () => {
-        socket.emit("sound", "C4");
+    useEffect(() => {
+        const onChangeGain = ({id, value}) => {
+            if (id == socket.id){
+                console.log(value);
+            }
+        }
+
+        socket.on("change-gain", onChangeGain);
+
+        return () => {
+            socket.off("change-gain", onChangeGain);
+        }
+    }, [socket])
+
+    console.log(instrumentName);
+
+    const sendSound = (note) => {
+        socket.emit("sound", {id: socket.id, note: note});
     }
+
     const sendAttack = () => {
 
     }
+
     const sendRelease = () => {
 
     }
+
     return ( 
         <div className="play">
-            {instrument == "phon" && <Phon sendSound={sendSound}/>}
-            {instrument == "lung" && <Lung sendSound={sendSound}/>}
-            {instrument == "lith" && <Lith sendSound={sendSound}/>}
+            {instrument.getJSX(sendSound)}
         </div>
     );
 }

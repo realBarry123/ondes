@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as Tone from "tone";
 import { percussiveSynth } from "../Synths";
+import { Instrument } from "../Instrument";
 
 const Host = ({ socket }) => {
     
@@ -17,7 +18,8 @@ const Host = ({ socket }) => {
     useEffect(() => {
 
         // When someone succeeds in joining the room
-        const onJoinSuccess = ({ id, instrument }) => {
+        const onJoinSuccess = ({ id, instrumentName }) => {
+            const instrument = new Instrument(instrumentName);
             setMembers(prevMembers => [...prevMembers, {id: id, instrument: instrument}]);
         }
 
@@ -31,8 +33,15 @@ const Host = ({ socket }) => {
             setRoomCode(code);
         }
 
-        const onSound = (note) => {
-            synth.triggerAttackRelease(note, "8n", Tone.now());
+        const onSound = ({ id, note }) => {
+            console.log(id);
+            console.log(note);
+            setMembers(prevMembers => {
+                const member = prevMembers.find(member => member.id === id);
+                if (!member) return prevMembers;
+                member.instrument.play(note);
+                return prevMembers;
+            });
         }
 
         socket.on("join-success", onJoinSuccess);
@@ -57,6 +66,10 @@ const Host = ({ socket }) => {
         setAudioStarted(true);
     }
 
+    const updateGain = (id, gainValue) => {
+        socket.emit("change-gain", {id: id, value: gainValue});
+    }
+
     return ( 
         <div className="host">
             {!audioStarted && <button 
@@ -67,7 +80,16 @@ const Host = ({ socket }) => {
             <p>{roomCode}</p>
 
             {members.map(item => { return (
-                <li>{item.instrument}</li>
+                <div>
+                    <div>{item.instrument.name}</div>
+                    <input 
+                        type="range" 
+                        min="-90"
+                        max="10"
+                        id={item.id} 
+                        onChange={(e) => {updateGain(item.id, e.target.value)}}
+                    />
+                </div>
             )})}
         </div>
     );

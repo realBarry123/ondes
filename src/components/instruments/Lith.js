@@ -2,7 +2,7 @@ import { Instrument } from "../../Instrument";
 import * as Tone from "tone";
 import { percussiveSynth } from "../../Synths";
 
-const Lith = () => {
+const Lith = ({ sendSound }) => {
     
     const notes = [
         {pitch: "A4", display: "☝︎"}, 
@@ -20,9 +20,9 @@ const Lith = () => {
 
     const isTouchDevice = "ontouchstart" in window;
 
-    const handlePlay = (note, e) => {
+    const handlePlay = (pitch, e) => {
         e.preventDefault();
-        instrument.play(note, "8n");
+        sendSound(pitch)
     }
 
     const instrument = new Instrument("percussive", percussiveSynth);
@@ -36,7 +36,7 @@ const Lith = () => {
                         onMouseDown={!isTouchDevice ? (e) => {handlePlay(note.pitch, e)} : undefined}
                         onTouchStart={isTouchDevice ? (e) => {handlePlay(note.pitch, e)} : undefined}
                         key={note.pitch}
-                        style={{height: "200px", width: "50px", fontSize: "30px"}}
+                        style={{height: "200px", width: "50px", fontSize: "40px"}}
                     >{note.display}</button>
                 ))}
             </div>
