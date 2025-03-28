@@ -12,7 +12,7 @@ var rooms = [];
 app.use(cors());
 
 const generateId = () => {
-  return Math.random().toString(36).substring(2, 6);
+	return Math.random().toString(36).substring(2, 6);
 }
 
 const randInstrument = () => {
