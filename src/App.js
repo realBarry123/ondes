@@ -4,7 +4,6 @@ import { io } from 'socket.io-client';
 import Home from "./components/Home.js";
 import Host from "./components/Host.js";
 import Play from "./components/Play.js";
-import DebugPage from "./components/DebugPage.js";
 const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
           <Route exact path="/" element={<Home socket={socket}/>} />
           <Route exact path="/host" element={<Host socket={socket}/>} />
           <Route exact path="/play" element={<Play socket={socket}/>} />
-          <Route exact path="/wtf" element={<DebugPage socket={socket}/>} />
         </Routes>
       </Router>
     </div>
