@@ -16,60 +16,62 @@ const generateId = () => {
 }
 
 const randInstrument = () => {
-  return "lith";
-  instruments = ["phon", "lung", "lith"];
-  return instruments[Math.floor(Math.random() * instruments.length)];
+	return "lith";
+	instruments = ["phon", "lung", "lith"];
+	return instruments[Math.floor(Math.random() * instruments.length)];
 }
 
 const io = new Server(server, {
-    cors: {
-        origin: "*", // Your React app's URL
-        methods: ["GET", "POST"],
+	cors: {
+		origin: "*", // Your React app's URL
+		methods: ["GET", "POST"],
     },
 });
 
 io.on("connection", (socket) => {
-  console.log("A user connected");
-  
-  socket.on("message", (msg) => {
-    console.log("RECEIVE message ", msg);
-    io.emit("message", msg);
-  });
+	console.log("A user connected");
 
-  socket.on("disconnect", () => {
-    console.log("RECEIVE disconnect");
-    io.emit("leave", socket.id);
-  });
+	socket.on("message", (msg) => {
+		console.log("RECEIVE message ", msg);
+		io.emit("message", msg);
+	});
 
-  socket.on("new-host", () => {
-    console.log("RECEIVE new-host");
-    const newId = generateId();
-    rooms.push(newId);
-    socket.join(newId);
-    io.to(newId).emit("host-code", newId);
-  });
+	socket.on("disconnect", () => {
+		console.log("RECEIVE disconnect");
+		io.emit("leave", socket.id);
+	});
 
-  socket.on("join-code", (code) => {
-    console.log("RECEIVE join-code " + code);
-    if (rooms.indexOf(code) >= 0){
-      socket.join(code);
-      io.to(code).emit("join-success", { id: socket.id, instrumentName: randInstrument() });
-    }
-    console.log(rooms);
-    console.log(socket.rooms);
-  });
+	socket.on("new-host", () => {
+		console.log("RECEIVE new-host");
+		const newId = generateId();
+		rooms.push(newId);
+		socket.join(newId);
+		io.to(newId).emit("host-code", newId);
+	});
 
-  socket.on("sound", ({ id, note }) => {
-    console.log("RECEIVE sound " + note);
-    io.emit("sound", {id: id, note: note});
-  });
+	socket.on("join-code", (code) => {
+		console.log("RECEIVE join-code " + code);
+		if (rooms.indexOf(code) >= 0){
+			socket.join(code);
+			io.to(code).emit("join-success", { id: socket.id, instrumentName: randInstrument() });
+		}
+		console.log(rooms);
+		console.log(socket.rooms);
+	});
 
-  socket.on("change-gain", ({id, value}) => {
-    console.log("RECEIVE change-gain " + id + ", " + value)
-    io.emit("change-gain", {id, value});
-  });
+	socket.on("sound", ({ id, note }) => {
+		const roomId = Array.from(socket.rooms)[1];
+		console.log(roomId + ": RECEIVE sound " + note);
+		socket.to(roomId).emit("sound", {id: id, note: note});
+	});
+
+	socket.on("change-gain", ({ id, value }) => {
+		const roomId = Array.from(socket.rooms)[1];
+		console.log("RECEIVE change-gain " + id + ", " + value)
+		socket.to(roomId).emit("change-gain", {id: id, value: value});
+	});
 });
 
 server.listen(4000, "0.0.0.0", () => {
-  console.log("Server running on port 4000");
+	console.log("Server running on port 4000");
 });
