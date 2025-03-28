@@ -1,30 +1,18 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Instrument } from "../Instrument";
+import Lith from "./instruments/Lith";
 
 const Play = ({ socket }) => {
     const { instrumentName } = useLocation().state;
-    const instrument = new Instrument(instrumentName);
-
-    useEffect(() => {
-        const onChangeGain = ({id, value}) => {
-            if (id == socket.id){
-                console.log(instrument.synth.volume.value);
-                instrument.synth.volume.value = value;
-            }
-        }
-
-        socket.on("change-gain", onChangeGain);
-
-        return () => {
-            socket.off("change-gain", onChangeGain);
-        }
-    }, [socket])
 
     console.log(instrumentName);
 
     const sendSound = (note) => {
         socket.emit("sound", {id: socket.id, note: note});
+    }
+
+    const sendGain = (gain) => {
+        socket.emit("gainChange", {id: socket.id, gain: gain});
     }
 
     const sendAttack = () => {
@@ -37,7 +25,7 @@ const Play = ({ socket }) => {
 
     return ( 
         <div className="play">
-            {instrument.getJSX(sendSound)}
+            {instrumentName == "lith" && <Lith sendSound={sendSound}/>}
         </div>
     );
 }

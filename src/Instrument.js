@@ -13,9 +13,6 @@ class Instrument {
         if (instrumentName == "lith") {
             this.type = "percussive";
             this.synth = createPercussiveSynth();
-            this.getJSX = (sendSound) => {
-                return (<Lith sendSound={sendSound}/>);
-            }
         }
     }
 

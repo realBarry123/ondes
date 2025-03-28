@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import * as Tone from "tone";
-import { percussiveSynth } from "../Synths";
 import { Instrument } from "../Instrument";
 
 const Host = ({ socket }) => {
@@ -66,10 +65,6 @@ const Host = ({ socket }) => {
         setAudioStarted(true);
     }
 
-    const updateGain = (id, gainValue) => {
-        socket.emit("change-gain", {id: id, value: gainValue});
-    }
-
     return ( 
         <div className="host">
             {!audioStarted && <button 
@@ -82,13 +77,6 @@ const Host = ({ socket }) => {
             {members.map(item => { return (
                 <div>
                     <div>{item.instrument.name}</div>
-                    <input 
-                        type="range" 
-                        min="-90"
-                        max="10"
-                        id={item.id} 
-                        onChange={(e) => {updateGain(item.id, e.target.value)}}
-                    />
                 </div>
             )})}
         </div>
