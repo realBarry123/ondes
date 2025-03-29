@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 
-const Lith = ({ sendSound }) => {
+const Lith = ({ sendSound, sendGain }) => {
     
     const notes = [
         {pitch: "A4", display: "☝︎"}, 
@@ -15,15 +16,22 @@ const Lith = ({ sendSound }) => {
         {pitch: "F#6", display: "☟"}
     ];
 
+
+    const [gainValue, setGainValue] = useState(0);
+
     const isTouchDevice = "ontouchstart" in window;
+
+    useEffect(() => {
+        sendGain(gainValue);
+    }, [gainValue])
 
     const handlePlay = (pitch, e) => {
         e.preventDefault();
-        sendSound(pitch)
+        sendSound(pitch);
     }
 
     return (
-        <div className="lith">
+        <div className="lith" style={{display: "flex"}}>
             <div className="key-container">
                 {notes.map(note => (
                     <button 
@@ -35,6 +43,13 @@ const Lith = ({ sendSound }) => {
                     >{note.display}</button>
                 ))}
             </div>
+            <input 
+                type="range" 
+                min="-30"
+                max="5"
+                value={gainValue}
+                onChange={(e) => (setGainValue(e.target.value))}
+            />
         </div>
     );
 }

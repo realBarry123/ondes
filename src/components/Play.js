@@ -12,7 +12,7 @@ const Play = ({ socket }) => {
     }
 
     const sendGain = (gain) => {
-        socket.emit("gainChange", {id: socket.id, gain: gain});
+        socket.emit("change-gain", {id: socket.id, value: gain});
     }
 
     const sendAttack = () => {
@@ -25,7 +25,7 @@ const Play = ({ socket }) => {
 
     return ( 
         <div className="play">
-            {instrumentName == "lith" && <Lith sendSound={sendSound}/>}
+            {instrumentName == "lith" && <Lith sendSound={sendSound} sendGain={sendGain}/>}
         </div>
     );
 }

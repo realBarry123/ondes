@@ -1,99 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 :root {
-  --color-background: #001418;
-  --color-foreground: #fffff0;
-  --color-secondary: #104038;
+	--color-background: #001418;
+	--color-foreground: #fffff0;
+	--color-secondary: #104038;
 }
 
 .App {
-  text-align: center;
-  font-family: "Quicksand";
+	text-align: center;
+	font-family: "Quicksand";
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+	overflow: hidden;
 }
 
 @keyframes title {
-  0% {margin-top: 150px}
-  50% {margin-top: 130px}
-  100% {margin-top: 150px}
+	0% {margin-top: 150px}
+	50% {margin-top: 130px}
+	100% {margin-top: 150px}
 }
 
 h1 {
-  font-size: 50px;
-  /*color: var(--color-secondary);*/
-  font-family: "Palatino";
-  font-weight: lighter;
-  letter-spacing: 5px;
-  animation-name: title;
-  animation-duration: 12s;
-  animation-iteration-count: infinite;
+	font-size: 50px;
+	/*color: var(--color-secondary);*/
+	font-family: "Palatino";
+	font-weight: lighter;
+	letter-spacing: 5px;
+	animation-name: title;
+	animation-duration: 12s;
+	animation-iteration-count: infinite;
 }
 
 h3 {
-  font-weight: lighter;
-  font-size: 16px;
-  margin-bottom: 50px;
+	font-weight: lighter;
+	font-size: 16px;
+	margin-bottom: 50px;
 }
 
 .ui-button {
-  all: unset;
-  background-color: #00000000;
-  border: solid 1px;
-  border-color: #00000000; 
-  color: var(--color-foreground);
-  padding-left: 20px;
-  padding-right: 20px;
-  transition: border-color 0.5s, padding-left 0.5s, padding-right 0.5s, background-color 0.5s;
-  font-size: 16px;
-  height: 32px; 
+	all: unset;
+	background-color: #00000000;
+	border: solid 1px;
+	border-color: #00000000; 
+	color: var(--color-foreground);
+	padding-left: 20px;
+	padding-right: 20px;
+	transition: border-color 0.5s, padding-left 0.5s, padding-right 0.5s, background-color 0.5s;
+	font-size: 16px;
+	height: 32px; 
 }
 
 .ui-button:hover {
-  border-color: var(--color-foreground);
-  padding-left: 30px;
-  padding-right: 30px;
-  cursor: pointer;
+	border-color: var(--color-foreground);
+	padding-left: 30px;
+	padding-right: 30px;
+	cursor: pointer;
 }
 
 .ui-button:active {
-  border-color: var(--color-foreground);
-  padding-left: 20px;
-  padding-right: 20px;
+	border-color: var(--color-foreground);
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .key-button {
-  all: unset;
-  background-color: #00000000;
-  border: solid 1px;
-  border-color: var(--color-foreground);
-  transition: background-color 0.5s;
-  margin: 5px;
+	all: unset;
+	background-color: #00000000;
+	border: solid 1px;
+	border-color: var(--color-foreground);
+	transition: background-color 0.5s;
+	margin: 5px;
 }
 
 .key-button:active {
-  background-color: var(--color-foreground);
+	background-color: var(--color-foreground);
 }
 
-input {
-  all: unset;
-  letter-spacing: 5px;
-  border-bottom: solid 1px #ffffff;
-  background-color: #041717;
-  color: #ffffff;
-  padding: 2px;
-  margin-top: 10px;
-  height: 32px;
+input[type=text] {
+	all: unset;
+	letter-spacing: 5px;
+	border-bottom: solid 1px #ffffff;
+	background-color: #041717;
+	color: #ffffff;
+	padding: 2px;
+	margin-top: 10px;
+	height: 32px;
 }
-/*
-.key-container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+
+input[type=range] {
+	all: unset;
+	writing-mode: vertical-lr;
+	direction: rtl;
+	margin: 5px 30px;
+	height: 200px;
+	width: 3px;
+	background-color: white;
 }
-  */
+
+input[type=range]::-webkit-slider-thumb {
+	appearance: none;
+	background-color: white;
+	height: 10px;
+	width: 25px;
+}

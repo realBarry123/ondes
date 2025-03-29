@@ -43,15 +43,26 @@ const Host = ({ socket }) => {
             });
         }
 
+        const onChangeGain = ({ id, value }) => {
+            setMembers(prevMembers => {
+                const member = prevMembers.find(member => member.id === id);
+                if (!member) return prevMembers;
+                member.instrument.synth.volume.value = value;
+                return prevMembers;
+            });
+        }
+
         socket.on("join-success", onJoinSuccess);
         socket.on("host-code", onHostCode);
         socket.on("sound", onSound);
+        socket.on("change-gain", onChangeGain);
         socket.on("leave", onLeave);
 
         return () => {
             socket.off("join-success", onJoinSuccess);
             socket.off("host-code", onHostCode);
             socket.off("sound", onSound);
+            socket.off("change-gain", onChangeGain);
             socket.off("leave", onLeave);
         }
     }, [socket]);

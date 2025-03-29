@@ -11,7 +11,7 @@ const createPercussiveSynth = () => {
         volume: -40,
         oscillator: {
             type: "custom",
-            partials: [1, 0.2, 0.3, 0.6, 0.2, 0, 0, 0, 0, 0, 0, 0]
+            partials: [1, 0.2, 0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         envelope: {
             attack: 0.005,
