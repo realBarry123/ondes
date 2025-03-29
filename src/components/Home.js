@@ -64,6 +64,8 @@ const Home = ({ socket }) => {
                     type="text" 
                     value={codeInput}
                     placeholder="join code"
+                    autocorrect="off"
+                    autocapitalize="off"
                     onChange={(e) => setCodeInput(e.target.value)}
                 />
                 <button 
