@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import { createPercussiveSynth } from "./Synths";
+import { createPercussiveSynth, createSustainSynth } from "./Synths";
 import Lith from "./components/instruments/Lith";
 
 class Instrument {
@@ -13,6 +13,10 @@ class Instrument {
         if (instrumentName == "lith") {
             this.type = "percussive";
             this.synth = createPercussiveSynth();
+        }
+        else if (instrumentName == "phon") {
+            this.type = "sustained";
+            this.synth = createSustainSynth();
         }
     }
 

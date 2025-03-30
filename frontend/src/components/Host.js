@@ -33,12 +33,28 @@ const Host = ({ socket }) => {
         }
 
         const onSound = ({ id, note }) => {
-            console.log(id);
-            console.log(note);
             setMembers(prevMembers => {
                 const member = prevMembers.find(member => member.id === id);
                 if (!member) return prevMembers;
                 member.instrument.play(note);
+                return prevMembers;
+            });
+        }
+
+        const onAttack = ({ id, note }) => {
+            setMembers(prevMembers => {
+                const member = prevMembers.find(member => member.id === id);
+                if (!member) return prevMembers;
+                member.instrument.play(note);
+                return prevMembers;
+            });
+        }
+
+        const onRelease = ({ id, note }) => {
+            setMembers(prevMembers => {
+                const member = prevMembers.find(member => member.id === id);
+                if (!member) return prevMembers;
+                member.instrument.stop(note);
                 return prevMembers;
             });
         }
@@ -55,6 +71,8 @@ const Host = ({ socket }) => {
         socket.on("join-success", onJoinSuccess);
         socket.on("host-code", onHostCode);
         socket.on("sound", onSound);
+        socket.on("attack", onAttack);
+        socket.on("release", onRelease);
         socket.on("change-gain", onChangeGain);
         socket.on("leave", onLeave);
 
@@ -62,6 +80,8 @@ const Host = ({ socket }) => {
             socket.off("join-success", onJoinSuccess);
             socket.off("host-code", onHostCode);
             socket.off("sound", onSound);
+            socket.off("attack", onAttack);
+            socket.off("release", onRelease);
             socket.off("change-gain", onChangeGain);
             socket.off("leave", onLeave);
         }
