@@ -7,19 +7,19 @@ import Play from "./components/Play.js";
 const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
-  
+
   console.log(socket);
 
-  return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Home socket={socket}/>} />
-          <Route exact path="/host" element={<Host socket={socket}/>} />
-          <Route exact path="/play" element={<Play socket={socket}/>} />
-        </Routes>
-      </Router>
-    </div>
+	return (
+		<div className="App">
+			<Router>
+				<Routes>
+					<Route exact path="/" element={<Home socket={socket}/>} />
+					<Route exact path="/host" element={<Host socket={socket}/>} />
+					<Route exact path="/play" element={<Play socket={socket}/>} />
+				</Routes>
+			</Router>
+		</div>
   );
   
 }
