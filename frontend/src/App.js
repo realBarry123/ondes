@@ -7,7 +7,7 @@ import Play from "./components/Play.js";
 const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
-
+  
   console.log(socket);
 
   return (
