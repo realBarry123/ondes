@@ -83,11 +83,11 @@ const Host = ({ socket }) => {
                 onClick={startTone}
             >start audio</button>}
 
-            <p>{roomCode}</p>
+            <h2 style={{fontSize: "50px", letterSpacing: "10px"}}>{roomCode}</h2>
 
             {members.map(item => { return (
                 <div>
-                    <div>{item.instrument.name}</div>
+                    <div>{item.id}</div>
                 </div>
             )})}
         </div>

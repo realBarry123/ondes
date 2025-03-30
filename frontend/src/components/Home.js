@@ -42,7 +42,8 @@ const Home = ({ socket }) => {
     return (
         <div className="home">
             <h1>Ondes</h1>
-            <h3>created by Barry Yu</h3>
+            <h2>for mixed ensemble</h2>
+            <h3>Barry Yu (2025)</h3>
 
             {!joinOn && <div>
                 <button 
@@ -64,8 +65,8 @@ const Home = ({ socket }) => {
                     type="text" 
                     value={codeInput}
                     placeholder="join code"
-                    autocorrect="off"
-                    autocapitalize="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
                     onChange={(e) => setCodeInput(e.target.value)}
                 />
                 <button 
