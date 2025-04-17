@@ -44,7 +44,7 @@ const Phon = ({ sendAttack, sendRelease, sendGain }) => {
                         onMouseDown={!isTouchDevice ? (e) => {handleAttack(note.pitch, e)} : undefined}
                         onTouchStart={isTouchDevice ? (e) => {handleAttack(note.pitch, e)} : undefined}
                         onMouseUp={!isTouchDevice ? (e) => {handleRelease(note.pitch, e)} : undefined}
-                        onTouchEnd={!isTouchDevice ? (e) => {handleRelease(note.pitch, e)} : undefined}
+                        onTouchEnd={isTouchDevice ? (e) => {handleRelease(note.pitch, e)} : undefined}
                         key={note.pitch}
                         style={{height: "200px", width: "50px", fontSize: "40px"}}
                     >{note.display}</button>
