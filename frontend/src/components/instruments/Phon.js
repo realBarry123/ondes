@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 
 const Phon = ({ sendAttack, sendRelease, sendGain }) => {
-    
+
     const notes = [
-        {pitch: "A4", display: "☝︎"}, 
-        {pitch: "A#4", display: "☜"}, 
-        {pitch: "C5", display: "☝︎"}, 
-        {pitch: "D#5", display: "☟"}, 
-        {pitch: "F#5", display: "☟"}, 
-        {pitch: "A5", display: "☝︎"}, 
-        {pitch: "A#5", display: "☜"}, 
-        {pitch: "C6", display: "☝︎"}, 
         {pitch: "D#6", display: "☞"}, 
         {pitch: "E6", display: "☝︎"}, 
+        {pitch: "A5", display: "☝︎"}, 
+        {pitch: "A#5", display: "☜"}, 
+        {pitch: "D#5", display: "☟"}, 
+        {pitch: "A4", display: "☝︎"}, 
+        {pitch: "A#4", display: "☜"}, 
+        {pitch: "C5", display: "☝︎"},
+        {pitch: "F#5", display: "☟"}, 
+        {pitch: "C6", display: "☝︎"}, 
         {pitch: "F#6", display: "☟"}
     ];
 
