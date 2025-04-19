@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
+import OrientAlert from "../OrientAlert";
 
 const Phon = ({ sendAttack, sendRelease, sendGain }) => {
 
     const notes = [
-        {pitch: "D#6", display: "☞"}, 
-        {pitch: "E6", display: "☝︎"}, 
-        {pitch: "A5", display: "☝︎"}, 
-        {pitch: "A#5", display: "☜"}, 
-        {pitch: "D#5", display: "☟"}, 
+        {pitch: "D#5", display: "☞"}, 
+        {pitch: "E5", display: "☝︎"}, 
         {pitch: "A4", display: "☝︎"}, 
         {pitch: "A#4", display: "☜"}, 
-        {pitch: "C5", display: "☝︎"},
-        {pitch: "F#5", display: "☟"}, 
-        {pitch: "C6", display: "☝︎"}, 
-        {pitch: "F#6", display: "☟"}
+        {pitch: "D#4", display: "☟"}, 
+        {pitch: "A3", display: "☝︎"}, 
+        {pitch: "A#3", display: "☜"}, 
+        {pitch: "C4", display: "☝︎"},
+        {pitch: "F#4", display: "☟"}, 
+        {pitch: "C5", display: "☝︎"}, 
+        {pitch: "F#5", display: "☟"}
     ];
 
 
@@ -57,6 +58,7 @@ const Phon = ({ sendAttack, sendRelease, sendGain }) => {
                 value={gainValue}
                 onChange={(e) => (setGainValue(e.target.value))}
             />
+            <OrientAlert targetOrientation="landscape" />
         </div>
     );
 }
