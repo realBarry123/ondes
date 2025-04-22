@@ -18,6 +18,10 @@ class Instrument {
             this.type = "sustained";
             this.synth = createSustainSynth();
         }
+        else if (instrumentName == "lung") {
+            this.type = "sustained";
+            this.synth = createSustainSynth();
+        }
     }
 
     play(note) {
