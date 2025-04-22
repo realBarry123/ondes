@@ -79,13 +79,16 @@ h3 {
 	background-color: #00000000;
 	border: solid 1px;
 	border-color: var(--color-foreground);
-	transition: background-color 0.5s;
+	transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 	margin: 5px;
 }
 
-.key-button:active {
+.key-button:active, .button-active {
 	background-color: var(--color-foreground);
+	color: var(--color-background);
+	border-color: var(--color-background);
 }
+
 
 input[type=text] {
 	all: unset;
