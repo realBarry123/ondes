@@ -12,7 +12,10 @@ const Host = ({ socket }) => {
 
     useEffect(() => {
         socket.emit("new-host", true);
-    }, []);
+        setInterval(() => {
+            members.forEach((member) => {member.instrument.updateGain()});
+        }, 100);
+    }, [members]);
 
     useEffect(() => {
 
@@ -68,12 +71,22 @@ const Host = ({ socket }) => {
             });
         }
 
+        const onChangeDGain = ({ id, value }) => {
+            setMembers(prevMembers => {
+                const member = prevMembers.find(member => member.id === id);
+                if (!member) return prevMembers;
+                member.instrument.dGain = value;
+                return prevMembers;
+            });
+        }
+
         socket.on("join-success", onJoinSuccess);
         socket.on("host-code", onHostCode);
         socket.on("sound", onSound);
         socket.on("attack", onAttack);
         socket.on("release", onRelease);
         socket.on("change-gain", onChangeGain);
+        socket.on("change-dgain", onChangeDGain);
         socket.on("leave", onLeave);
 
         return () => {
@@ -83,6 +96,7 @@ const Host = ({ socket }) => {
             socket.off("attack", onAttack);
             socket.off("release", onRelease);
             socket.off("change-gain", onChangeGain);
+            socket.off("change-dgain", onChangeDGain);
             socket.off("leave", onLeave);
         }
     }, [socket]);

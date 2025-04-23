@@ -4,12 +4,12 @@ import OrientAlert from "../OrientAlert";
 const Lung = ({ sendAttack, sendRelease, sendDGain }) => {
 
     const [notes, setNotes] = useState([
-        {pitch: "B3", display: "Œ", on: false},
-        {pitch: "E3", display: "ɔ", on: false},
-        {pitch: "G3", display: "Œ", on: false},
-        {pitch: "C3", display: "ɔ", on: false},
-        {pitch: "D#4", display: "Œ", on: false},
-        {pitch: "G#3", display: "ɔ", on: false},
+        {pitch: "B2", display: "Œ", on: false},
+        {pitch: "E2", display: "ɔ", on: false},
+        {pitch: "G2", display: "Œ", on: false},
+        {pitch: "C2", display: "ɔ", on: false},
+        {pitch: "D#3", display: "Œ", on: false},
+        {pitch: "G#2", display: "ɔ", on: false},
     ])
 
     const isTouchDevice = "ontouchstart" in window;
@@ -28,6 +28,14 @@ const Lung = ({ sendAttack, sendRelease, sendDGain }) => {
         setNotes(notesCopy);
     }
 
+    const handlePump = () => {
+        sendDGain(2);
+    }
+
+    const handleRelease = () => {
+        sendDGain(-0.2);
+    }
+
     return (
         <div className="lung" style={{display: "block"}}>
             <div className="key-container" style={{width: "400px", margin: "auto"}}>
@@ -43,6 +51,10 @@ const Lung = ({ sendAttack, sendRelease, sendDGain }) => {
             </div>
             <button 
                 className="key-button" 
+                onMouseDown={!isTouchDevice ? (e) => {handlePump(e)} : undefined}
+                onTouchStart={isTouchDevice ? (e) => {handlePump(e)} : undefined}
+                onMouseUp={!isTouchDevice ? (e) => {handleRelease(e)} : undefined}
+                onTouchEnd={isTouchDevice ? (e) => {handleRelease(e)} : undefined}
                 style={{height: "50px", width: "500px", fontSize: "40px"}}
             ></button>
             <OrientAlert targetOrientation="landscape" />

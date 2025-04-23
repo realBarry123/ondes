@@ -16,7 +16,7 @@ const generateId = () => {
 }
 
 const randInstrument = () => {
-	return "phon";
+	return "lung";
 	instruments = ["phon", "lung", "lith"];
 	return instruments[Math.floor(Math.random() * instruments.length)];
 }
@@ -81,6 +81,12 @@ io.on("connection", (socket) => {
 		const roomId = Array.from(socket.rooms)[1];
 		console.log("RECEIVE change-gain " + id + ", " + value)
 		socket.to(roomId).emit("change-gain", {id: id, value: value});
+	});
+	
+	socket.on("change-dgain", ({ id, value }) => {
+		const roomId = Array.from(socket.rooms)[1];
+		console.log("RECEIVE change-dgain " + id + ", " + value)
+		socket.to(roomId).emit("change-dgain", {id: id, value: value});
 	});
 });
 

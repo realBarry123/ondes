@@ -7,7 +7,7 @@ const createPercussiveSynth = () => {
         rolloff: -24
     }).toDestination();
 
-    const percussiveSynth = new Tone.PolySynth(Tone.Synth, {
+    const synth = new Tone.PolySynth(Tone.Synth, {
         volume: -40,
         oscillator: {
             type: "custom",
@@ -23,13 +23,13 @@ const createPercussiveSynth = () => {
 
     const limiter = new Tone.Limiter(-60);
 
-    percussiveSynth.toDestination();
+    synth.toDestination();
 
-    return percussiveSynth;
+    return synth;
 }
 
 const createSustainSynth = () => {
-    const sustainSynth = new Tone.PolySynth(Tone.Synth, {
+    const synth = new Tone.PolySynth(Tone.Synth, {
         volume: -60,
         oscillator: {
             type: "custom",
@@ -43,9 +43,29 @@ const createSustainSynth = () => {
         }
     })
 
-    sustainSynth.toDestination();
+    synth.toDestination();
 
-    return sustainSynth; 
+    return synth; 
 }
 
-export { createPercussiveSynth, createSustainSynth };
+const createDroneSynth = () => {
+    const synth = new Tone.PolySynth(Tone.Synth, {
+        volume: -60,
+        oscillator: {
+            type: "custom",
+            partials: [1, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        envelope: {
+            attack: 0.005,
+            decay: 3,
+            sustain: 0.6,
+            release: 2
+        }
+    })
+
+    synth.toDestination();
+
+    return synth; 
+}
+
+export { createPercussiveSynth, createSustainSynth, createDroneSynth };
