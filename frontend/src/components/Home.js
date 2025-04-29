@@ -75,6 +75,9 @@ const Home = ({ socket }) => {
                     style={{marginLeft: "10px"}}
                 >submit</button>
             </div>}
+            <div className="link-container">
+                <Link className="link" to={{pathname: "/program"}}>program note</Link>
+            </div>
         </div>
     );
 }

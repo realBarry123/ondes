@@ -78,6 +78,22 @@ h3 {
 	margin-bottom: 50px;
 }
 
+.link-container {
+	bottom: 10px;
+	left: 10px;
+	position: fixed;
+}
+
+.link {
+	all: unset;
+	color: var(--color-foreground);
+}
+
+.link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .ui-button {
 	all: unset;
 	background-color: #00000000;
