@@ -17,6 +17,31 @@ body {
 	overflow: hidden;
 }
 
+p {
+	font-size: 16px;
+	font-weight: lighter;
+	margin-bottom: 30px;
+	line-height: 32px;
+}
+
+hr {
+	margin: 40px 0;
+}
+
+::-webkit-scrollbar {
+	visibility: hidden;
+}
+
+.program-text-container {
+	width: 60%;
+	margin-bottom: 100px;
+}
+
+.program {
+	overflow: auto;
+	height: 100vh;
+}
+
 @keyframes title {
 	0% {margin-top: 150px}
 	50% {margin-top: 130px}
@@ -33,6 +58,11 @@ h1 {
 	animation-duration: 12s;
 	animation-iteration-count: infinite;
 	margin-bottom: 0px;
+}
+
+.program-title {
+	font-size: 35px;
+	margin-bottom: 50px;
 }
 
 h2 {
