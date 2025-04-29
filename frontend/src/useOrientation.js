@@ -17,7 +17,7 @@ const useOrientation = () => {
     	}
     }, [])
     
-    return (orientation == "landscape-primary" || orientation == "landscape-secondary")?
+    return (orientation === "landscape-primary" || orientation === "landscape-secondary")?
     "landscape":"portrait";
 }
 

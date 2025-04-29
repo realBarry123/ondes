@@ -1,20 +1,19 @@
 import useOrientation from "../useOrientation";
 
 const OrientAlert = ({ targetOrientation }) => {
-    const isTouchDevice = "ontouchstart" in window;
 
     const orientation = useOrientation();
     
     return (
         <div className="orient-alert">
             {
-                orientation != targetOrientation && 
-                targetOrientation == "landscape" && 
+                orientation !== targetOrientation && 
+                targetOrientation === "landscape" && 
                 <div className="fullscreen-message">꜋</div>
             }
             {
-                orientation != targetOrientation && 
-                targetOrientation == "portrait" &&
+                orientation !== targetOrientation && 
+                targetOrientation === "portrait" &&
                 <div className="fullscreen-message">꜉</div>
             }
         </div>

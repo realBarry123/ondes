@@ -8,8 +8,6 @@ const Host = ({ socket }) => {
     const [members, setMembers] = useState([]);
     const [audioStarted, setAudioStarted] = useState(false);
 
-    const synth = new Tone.Synth().toDestination();
-
     useEffect(() => {
         socket.emit("new-host", true);
         setInterval(() => {
@@ -26,6 +24,8 @@ const Host = ({ socket }) => {
         }
 
         const onLeave = (id) => {
+            const member = members.find(member => member.id === id);
+            member.instrument.dispose();
             setMembers(prevMembers => prevMembers.filter(member => member.id !== id));
         }
 

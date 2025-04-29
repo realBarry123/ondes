@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Lith from "./instruments/Lith";
 import Phon from "./instruments/Phon";
@@ -31,9 +30,9 @@ const Play = ({ socket }) => {
 
     return ( 
         <div className="play">
-            {instrumentName == "lith" && <Lith sendSound={sendSound} sendGain={sendGain} />}
-            {instrumentName == "phon" && <Phon sendAttack={sendAttack} sendRelease={sendRelease} sendGain={sendGain} />}
-            {instrumentName == "lung" && <Lung sendAttack={sendAttack} sendRelease={sendRelease} sendDGain={sendDGain} />}
+            {instrumentName === "lith" && <Lith sendSound={sendSound} sendGain={sendGain} />}
+            {instrumentName === "phon" && <Phon sendAttack={sendAttack} sendRelease={sendRelease} sendGain={sendGain} />}
+            {instrumentName === "lung" && <Lung sendAttack={sendAttack} sendRelease={sendRelease} sendDGain={sendDGain} />}
         </div>
     );
 }

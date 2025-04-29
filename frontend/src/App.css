@@ -17,6 +17,32 @@ body {
 	overflow: hidden;
 }
 
+p {
+	font-size: 16px;
+	font-weight: lighter;
+	margin-bottom: 30px;
+	line-height: 32px;
+}
+
+hr {
+	margin: 40px 0;
+}
+
+::-webkit-scrollbar {
+	visibility: hidden;
+}
+
+.program-text-container {
+	width: 80%;
+	max-width: 900px;
+	margin-bottom: 200px;
+}
+
+.program {
+	overflow: auto;
+	height: 100vh;
+}
+
 @keyframes title {
 	0% {margin-top: 150px}
 	50% {margin-top: 130px}
@@ -35,6 +61,11 @@ h1 {
 	margin-bottom: 0px;
 }
 
+.program-title {
+	font-size: 35px;
+	margin-bottom: 50px;
+}
+
 h2 {
 	font-size: 20px;
 	font-weight: lighter;
@@ -46,6 +77,27 @@ h3 {
 	font-weight: lighter;
 	font-size: 16px;
 	margin-bottom: 50px;
+}
+
+.link-container {
+	bottom: 30px;
+	left: 10px;
+	position: fixed;
+}
+
+.link {
+	all: unset;
+	padding: 20px;
+	color: var(--color-foreground);
+}
+
+.link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.link:active {
+	text-decoration: none;
 }
 
 .ui-button {
