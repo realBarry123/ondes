@@ -33,8 +33,9 @@ hr {
 }
 
 .program-text-container {
-	width: 60%;
-	margin-bottom: 100px;
+	width: 80%;
+	max-width: 900px;
+	margin-bottom: 200px;
 }
 
 .program {
@@ -79,19 +80,24 @@ h3 {
 }
 
 .link-container {
-	bottom: 10px;
+	bottom: 30px;
 	left: 10px;
 	position: fixed;
 }
 
 .link {
 	all: unset;
+	padding: 20px;
 	color: var(--color-foreground);
 }
 
 .link:hover {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+.link:active {
+	text-decoration: none;
 }
 
 .ui-button {

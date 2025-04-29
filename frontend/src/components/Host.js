@@ -24,6 +24,8 @@ const Host = ({ socket }) => {
         }
 
         const onLeave = (id) => {
+            const member = members.find(member => member.id === id);
+            member.instrument.dispose();
             setMembers(prevMembers => prevMembers.filter(member => member.id !== id));
         }
 
