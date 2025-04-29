@@ -1,11 +1,6 @@
 import * as Tone from "tone";
 
 const createPercussiveSynth = () => {
-    const lowPass = new Tone.Filter({
-        frequency: 4400, // Default cutoff
-        type: "lowpass",
-        rolloff: -24
-    }).toDestination();
 
     const synth = new Tone.PolySynth(Tone.Synth, {
         volume: -40,
@@ -20,8 +15,6 @@ const createPercussiveSynth = () => {
             release: 2
         }
     })
-
-    const limiter = new Tone.Limiter(-60);
 
     synth.toDestination();
 

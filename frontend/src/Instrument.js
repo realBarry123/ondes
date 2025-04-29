@@ -1,6 +1,5 @@
 import * as Tone from "tone";
 import { createPercussiveSynth, createSustainSynth, createDroneSynth } from "./Synths";
-import Lith from "./components/instruments/Lith";
 
 class Instrument {
     type;

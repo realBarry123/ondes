@@ -42,7 +42,7 @@ const Home = ({ socket }) => {
     return (
         <div className="home">
             <h1>Ondes</h1>
-            <h2>for mixed ensemble</h2>
+            <h2>for networked ensemble</h2>
             <h3>Barry Yu (2025)</h3>
 
             {!joinOn && <div>
