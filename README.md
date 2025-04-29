@@ -1,9 +1,28 @@
 # Ondes
+
 ## About
-A sound-based multiplayer game. It just barely works, you could say it's in the pre-alpha stage.
-### Built With
+
+An interactive composition / electronic instrument / multiplayer game, built for networked ensemble. 
+
+### Frameworks Used
 * [React](https://react.dev/)
 * [Socket.IO](https://socket.io/)
 * [Tone.js](https://tonejs.github.io/)
+  
+## Program Note
+Ondes was my attempt at making music that was equally accessible to everyone. Playable on any combination of devices, from anywhere with internet access, and without a score, it removes the usual requirements for instruments and musical knowledge.
+
+To further level the playing field, I employed an array of unfamiliar, often mysterious interfaces, labels, and sounds. The inaccessibility of the music becomes another equalizer, confounding musicians and non-musicians alike.
+
+The title, “Ondes”, means “waves” in French and comes from the Ondes Martenot, an early electronic instrument used extensively by Olivier Messiaen, from whom the aesthetic of the music draws inspiration.
+
+As the piece is put into motion, it relies on the sending and receiving of invisible “ondes” (radio waves) through the air.
+
+I don’t understand this technology, and as far as I’m concerned, no one does.
+
+<p align="center">#</p>
+
+I would like to thank my mentors Felix Huang and Alfredo Santa Ana for providing me with valuable technical and intellectual support before and during the development process, as well as my brother Andy for being this project’s first hardcore player.
+
 ## License
 Distributed under the GNU General Public License v3.0. See [LICENSE](https://github.com/realBarry123/ondes/blob/main/LICENSE) for more information
