@@ -31,3 +31,4 @@ src/App.test.js
 src/setupTests.js
 
 .env
+frontend/src/components/LungTest.js
