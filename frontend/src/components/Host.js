@@ -10,6 +10,9 @@ const Host = ({ socket }) => {
 
     useEffect(() => {
         socket.emit("new-host", true);
+    }, []);
+
+    useEffect(() => {
         setInterval(() => {
             members.forEach((member) => {member.instrument.updateGain()});
         }, 100);
@@ -24,8 +27,8 @@ const Host = ({ socket }) => {
         }
 
         const onLeave = (id) => {
-            const member = members.find(member => member.id === id);
-            member.instrument.dispose();
+            // const member = members.find(member => member.id === id);
+            // member.instrument.dispose();
             setMembers(prevMembers => prevMembers.filter(member => member.id !== id));
         }
 
@@ -100,10 +103,6 @@ const Host = ({ socket }) => {
             socket.off("leave", onLeave);
         }
     }, [socket]);
-
-    useEffect(() => {
-        console.log("Updated members list:", members);
-    }, [members]); // Runs whenever `members` changes
 
     const startTone = () => { // Turn on Tone.js
         Tone.start();
