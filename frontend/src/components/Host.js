@@ -24,8 +24,9 @@ const Host = ({ socket }) => {
         }
 
         const onLeave = (id) => {
-            const member = members.find(member => member.id === id);
-            member.instrument.dispose();
+            // const member = members.find(member => member.id === id);
+            // member.instrument.dispose();
+            // These lines keep causing me bugs for no reason, will get back ASAP
             setMembers(prevMembers => prevMembers.filter(member => member.id !== id));
         }
 
