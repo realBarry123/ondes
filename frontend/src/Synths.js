@@ -23,9 +23,10 @@ const createPercussiveSynth = () => {
 
     const limiter = new Tone.Limiter(-60);
 
-    synth.toDestination();
+    const gainNode = new Tone.Gain(0).toDestination();
+    synth.connect(gainNode);
 
-    return synth;
+    return { synth, gainNode };
 }
 
 const createSustainSynth = () => {
@@ -39,13 +40,14 @@ const createSustainSynth = () => {
             attack: 0.005,
             decay: 3,
             sustain: 0.6,
-            release: 2
+            release: 0.3
         }
     })
 
-    synth.toDestination();
+    const gainNode = new Tone.Gain(0).toDestination();
+    synth.connect(gainNode);
 
-    return synth; 
+    return { synth, gainNode };
 }
 
 const createDroneSynth = () => {
@@ -53,19 +55,21 @@ const createDroneSynth = () => {
         volume: -60,
         oscillator: {
             type: "custom",
-            partials: [1, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            partials: [1, 0.5, 1, 1, 1, 0, 0, 0, 0.5, 0, 0, 0.5]
         },
+        
         envelope: {
-            attack: 0.005,
-            decay: 3,
-            sustain: 0.6,
-            release: 2
+            attack: 0.1,
+            decay: 2,
+            sustain: 0.8,
+            release: 3
         }
     })
 
-    synth.toDestination();
+    const gainNode = new Tone.Gain(0).toDestination();
+    synth.connect(gainNode);
 
-    return synth; 
+    return { synth, gainNode };
 }
 
 export { createPercussiveSynth, createSustainSynth, createDroneSynth };

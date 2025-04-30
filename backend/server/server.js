@@ -82,7 +82,7 @@ io.on("connection", (socket) => {
 		console.log("RECEIVE change-gain " + id + ", " + value)
 		socket.to(roomId).emit("change-gain", {id: id, value: value});
 	});
-	
+
 	socket.on("change-dgain", ({ id, value }) => {
 		const roomId = Array.from(socket.rooms)[1];
 		console.log("RECEIVE change-dgain " + id + ", " + value)

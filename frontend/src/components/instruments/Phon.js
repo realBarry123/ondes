@@ -53,8 +53,8 @@ const Phon = ({ sendAttack, sendRelease, sendGain }) => {
             </div>
             <input 
                 type="range" 
-                min="-30"
-                max="5"
+                min="0"
+                max="1"
                 value={gainValue}
                 onChange={(e) => (setGainValue(e.target.value))}
             />

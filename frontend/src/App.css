@@ -9,6 +9,9 @@
 .App {
 	text-align: center;
 	font-family: "Quicksand";
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	user-select: none;
 }
 
 body {

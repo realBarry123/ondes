@@ -12,10 +12,16 @@ const Host = ({ socket }) => {
 
     useEffect(() => {
         socket.emit("new-host", true);
-        setInterval(() => {
+    }, []);
+
+    useEffect(() => {
+        console.log("update gain");
+        const interval = setInterval(() => {
             members.forEach((member) => {member.instrument.updateGain()});
-        }, 100);
-    }, [members]);
+        }, 200);
+
+        return () => clearInterval(interval); // cleanup
+    }, [members])
 
     useEffect(() => {
 
@@ -66,7 +72,7 @@ const Host = ({ socket }) => {
             setMembers(prevMembers => {
                 const member = prevMembers.find(member => member.id === id);
                 if (!member) return prevMembers;
-                member.instrument.synth.volume.value = value;
+                member.instrument.gain = value;
                 return prevMembers;
             });
         }
