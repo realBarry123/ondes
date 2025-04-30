@@ -49,15 +49,10 @@ class Instrument {
 
     updateGain() {
         console.log("Updating gain:", this.gain);
-        if (this.type === "drone") {
-            const newGain = Math.max(Math.min(this.gain + this.dGain, 1), 0);
-
-            if (newGain !== this.gain) {
-                this.gain = newGain;
-                this.gainNode.gain.rampTo(this.gain);
-                console.log("Updated gain:", this.gain);
-            }
-        }
+        const newGain = Math.max(Math.min(this.gain + this.dGain, 1), 0);
+        this.gain = newGain;
+        this.gainNode.gain.rampTo(this.gain);
+        console.log("Updated gain:", this.gain);
     }
 
     dispose() {

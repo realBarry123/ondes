@@ -18,12 +18,12 @@ const Phon = ({ sendAttack, sendRelease, sendGain }) => {
     ];
 
 
-    const [gainValue, setGainValue] = useState(0);
+    const [gainValue, setGainValue] = useState(50);
 
     const isTouchDevice = "ontouchstart" in window;
 
     useEffect(() => {
-        sendGain(gainValue);
+        sendGain(gainValue/100);
     }, [gainValue])
 
     const handleAttack = (pitch, e) => {
@@ -54,7 +54,7 @@ const Phon = ({ sendAttack, sendRelease, sendGain }) => {
             <input 
                 type="range" 
                 min="0"
-                max="1"
+                max="100"
                 value={gainValue}
                 onChange={(e) => (setGainValue(e.target.value))}
             />

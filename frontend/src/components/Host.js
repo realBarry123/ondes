@@ -15,12 +15,12 @@ const Host = ({ socket }) => {
     }, []);
 
     useEffect(() => {
-        console.log("update gain");
+        // Create new interval when `members` changes
         const interval = setInterval(() => {
             members.forEach((member) => {member.instrument.updateGain()});
         }, 200);
 
-        return () => clearInterval(interval); // cleanup
+        return () => clearInterval(interval); // Cleanup interval to prevent the ULTIMATE BUG
     }, [members])
 
     useEffect(() => {
