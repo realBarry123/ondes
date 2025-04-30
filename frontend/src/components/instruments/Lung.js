@@ -29,11 +29,11 @@ const Lung = ({ sendAttack, sendRelease, sendDGain }) => {
     }
 
     const handlePump = () => {
-        sendDGain(0.3);
+        sendDGain(0.03);
     }
 
     const handleRelease = () => {
-        sendDGain(-0.1);
+        sendDGain(-0.01);
     }
 
     return (

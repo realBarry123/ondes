@@ -18,7 +18,7 @@ const Host = ({ socket }) => {
             members.forEach((member) => {member.instrument.updateGain()});
         }, 200);
 
-        return () => clearInterval(interval); // Cleanup interval to prevent the ULTIMATE BUG
+        return () => clearInterval(interval); // Cleanup interval
     }, [members])
 
     useEffect(() => {
