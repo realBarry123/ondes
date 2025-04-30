@@ -62,4 +62,4 @@ class Instrument {
     }
 }
 
-export {Instrument}
+export { Instrument };
