@@ -4,12 +4,12 @@ import OrientAlert from "../OrientAlert";
 const Lung = ({ sendAttack, sendRelease, sendDGain }) => {
 
     const [notes, setNotes] = useState([
-        {pitch: "B2", display: "Œ", on: false},
-        {pitch: "E2", display: "ɔ", on: false},
-        {pitch: "G2", display: "Œ", on: false},
-        {pitch: "C2", display: "ɔ", on: false},
-        {pitch: "D#3", display: "Œ", on: false},
-        {pitch: "G#2", display: "ɔ", on: false},
+        {pitch: "B3", display: "Œ", on: false},
+        {pitch: "E3", display: "ɔ", on: false},
+        {pitch: "G3", display: "Œ", on: false},
+        {pitch: "C3", display: "ɔ", on: false},
+        {pitch: "D#4", display: "Œ", on: false},
+        {pitch: "G#3", display: "ɔ", on: false},
     ])
 
     const isTouchDevice = "ontouchstart" in window;
@@ -29,11 +29,11 @@ const Lung = ({ sendAttack, sendRelease, sendDGain }) => {
     }
 
     const handlePump = () => {
-        sendDGain(2);
+        sendDGain(0.3);
     }
 
     const handleRelease = () => {
-        sendDGain(-0.2);
+        sendDGain(-0.1);
     }
 
     return (

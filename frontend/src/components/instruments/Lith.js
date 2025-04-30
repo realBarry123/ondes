@@ -17,12 +17,12 @@ const Lith = ({ sendSound, sendGain }) => {
     ];
 
 
-    const [gainValue, setGainValue] = useState(0);
+    const [gainValue, setGainValue] = useState(50);
 
     const isTouchDevice = "ontouchstart" in window;
 
     useEffect(() => {
-        sendGain(gainValue);
+        sendGain(gainValue/100);
     }, [gainValue])
 
     const handlePlay = (pitch, e) => {
@@ -45,8 +45,8 @@ const Lith = ({ sendSound, sendGain }) => {
             </div>
             <input 
                 type="range" 
-                min="-30"
-                max="5"
+                min="0"
+                max="100"
                 value={gainValue}
                 onChange={(e) => (setGainValue(e.target.value))}
             />

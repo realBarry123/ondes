@@ -5,24 +5,28 @@ class Instrument {
     type;
     synth;
     html;
+    meter;
     name;
 
     constructor(instrumentName) {
-        this.gain = -30;
+        this.gain = 0;
         this.dGain = 0;
         this.name = instrumentName;
         if (instrumentName === "lith") {
             this.type = "percussive";
-            this.synth = createPercussiveSynth();
+            ({synth: this.synth, gainNode: this.gainNode} = createPercussiveSynth());
         }
         else if (instrumentName === "phon") {
             this.type = "sustained";
-            this.synth = createSustainSynth();
+            ({synth: this.synth, gainNode: this.gainNode} =createSustainSynth());
         }
         else if (instrumentName === "lung") {
             this.type = "drone";
-            this.synth = createDroneSynth();
+            ({synth: this.synth, gainNode: this.gainNode} = createDroneSynth());
             this.updateGain();
+        }else{
+            console.error("Unknown instrument type:", instrumentName);
+            return;
         }
     }
 
@@ -31,6 +35,7 @@ class Instrument {
             this.synth.triggerAttackRelease(note, "8n", Tone.now());
         }
         else if (this.type === "sustained" || this.type === "drone") {
+            this.synth.triggerRelease(note);
             this.synth.triggerAttack(note, "8n", Tone.now());
         }
     }
@@ -42,12 +47,16 @@ class Instrument {
     }
 
     updateGain() {
-        console.log("h");
-        if (this.type === "drone") {
-            this.gain = Math.max(Math.min(this.gain + this.dGain, 5), -30);
-            console.log("gain: " + this.gain);
-            this.synth.volume.value = this.gain;
-        }
+        console.log("Updating gain:", this.gain);
+        const newGain = Math.max(Math.min(this.gain + this.dGain, 1), 0);
+        this.gain = newGain;
+        this.gainNode.gain.rampTo(this.gain);
+        console.log("Updated gain:", this.gain);
+    }
+
+    dispose() {
+        if (this.synth) this.synth.dispose();
+        if (this.gainNode) this.gainNode.dispose();
     }
 
     setDGain(gain) {
@@ -55,19 +64,4 @@ class Instrument {
     }
 }
 
-class DroneInstrument extends Instrument{
-    constructor(synth) {
-        super("drone", synth);
-    }
-
-    play(note) {
-        this.synth.triggerAttack(note, "8n", Tone.now());
-    }
-
-    stop(note) {
-        this.synth.triggerRelease(note);
-    }
-
-}
-
-export {Instrument, DroneInstrument}
+export {Instrument}
