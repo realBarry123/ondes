@@ -15,10 +15,26 @@ const generateId = () => {
 	return Math.random().toString(36).substring(2, 6);
 }
 
-const randInstrument = () => {
-	return "lung";
-	instruments = ["phon", "lung", "lith"];
-	return instruments[Math.floor(Math.random() * instruments.length)];
+const pickInstrument = (instruments) => {
+	const countPhon = instruments.filter(instrument => instrument === "phon").length;
+	const countLung = instruments.filter(instrument => instrument === "lung").length;
+	const countLith = instruments.filter(instrument => instrument === "lith").length;
+	console.log("countPhon: " + countPhon + ", countLung: " + countLung + ", countLith: " + countLith)
+
+	if (countPhon === countLung && countLung === countLith) {
+		return "lung";
+	}
+	if (countLung === 0) {
+		return "lung";
+	}
+	if (countLith === 0) {
+		return "lith";
+	}
+	if (countPhon === 0) {
+		return "phon";
+	}
+	
+	return ["phon", "lung", "lith"][Math.floor(Math.random() * 3)];
 }
 
 const io = new Server(server, {
@@ -44,16 +60,27 @@ io.on("connection", (socket) => {
 	socket.on("new-host", () => {
 		console.log("RECEIVE new-host");
 		const newId = generateId();
-		rooms.push(newId);
+		rooms.push({code: newId, instruments: []});
 		socket.join(newId);
 		io.to(newId).emit("host-code", newId);
 	});
 
 	socket.on("join-code", (code) => {
 		console.log("RECEIVE join-code " + code);
-		if (rooms.indexOf(code) >= 0){
+
+		const foundRoom = rooms.find(room => room.code === code);
+
+		console.log(foundRoom);
+
+		if (typeof foundRoom !== "undefined"){
 			socket.join(code);
-			io.to(code).emit("join-success", { id: socket.id, instrumentName: randInstrument() });
+
+			const instrument = pickInstrument(foundRoom.instruments);
+
+			console.log(instrument);
+			foundRoom.instruments.push(instrument);
+
+			io.to(code).emit("join-success", { id: socket.id, instrumentName: instrument });
 		}
 		console.log(rooms);
 		console.log(socket.rooms);
