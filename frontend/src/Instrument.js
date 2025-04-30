@@ -47,9 +47,7 @@ class Instrument {
     }
 
     updateGain() {
-        console.log("Updating gain:", this.gain);
-        const newGain = Math.max(Math.min(this.gain + this.dGain, 1), 0);
-        this.gain = newGain;
+        this.gain = Math.max(Math.min(this.gain + this.dGain, 1), 0);
         this.gainNode.gain.rampTo(this.gain);
         console.log("Updated gain:", this.gain);
     }

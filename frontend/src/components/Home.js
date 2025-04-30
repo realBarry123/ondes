@@ -8,10 +8,12 @@ const Home = ({ socket }) => {
     const [joinOn, setJoinOn] = useState(false);
     const [codeInput, setCodeInput] = useState("");
 
+    // Submit join code to server
     const submitJoin = (code) => {
         socket.emit("join-code", code);
     }
 
+    // When the user clicks the "create new" button
     const toHost = () => {
         navigate("/host", { replace: true });
     }
@@ -21,8 +23,9 @@ const Home = ({ socket }) => {
         if (node) {
           node.focus();
         }
-      }, []);
+    }, []);
     
+    // On socket change
     useEffect(() => {
 
         // When the join code is verified by the server
