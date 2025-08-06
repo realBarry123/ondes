@@ -30,6 +30,9 @@ I don’t understand this technology, and as far as I’m concerned, no one does
 I would like to thank my mentors Felix Huang and Alfredo Santa Ana for providing me with valuable technical and intellectual support before and during the development process, as well as my brother Andy for being this project’s first hardcore player.
 
 ## Local Setup Instructions
+
+Note: this is a simplified tutorial for the tech people. For full instructions see [LOWTECH.md](LOWTECH.md).
+
 Currently, this project is not being hosted on a public server. Therefore, if you really must play it, here are the steps to set up a server on your own computer. 
 
 ### Server Prerequisites
@@ -38,7 +41,7 @@ Currently, this project is not being hosted on a public server. Therefore, if yo
 - Git (obviously)
   
 ### Server Setup
-1. Clone the repo. 
+1. Clone the repo. If you have no idea what that means, see [LOWTECH.md](LOWTECH.md). 
 2. Run `npm install` in both the `backend` and `frontend` directories. 
 3. Edit `frontend/.env` template to include your local IP address (`ipconfig getifaddr en0`) and backend port.
    - Example: `REACT_APP_SOCKET_URL = http://10.69.69.420:4000`
