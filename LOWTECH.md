@@ -9,7 +9,7 @@ This is a web app that will be hosted on a local server like your computer. That
 2. Git: this will let you take code from Github and put it on your computer. Install it at https://git-scm.com/downloads/mac.
 
 ## Git Clone
-Go to the **Finder** and locate where you want this code to be (e.g. Desktop). 
+Go to the **Finder** and locate the folder where you want this code to be (e.g. Desktop). 
 
 Right-click the folder, go to **Services -> New Terminal at Folder**. 
 
@@ -44,7 +44,7 @@ npm install
 
 ## Setting Up the Server Address
 In the **Finder**, go to `ondes/frontend` and find the file `.env`
-- If you don't see it, hit **⌘ + Shift + .** and it should show up (these files are hidden by the system by default.
+- If you don't see it, hit **⌘ + Shift + .** and it should show up (these files are hidden by the system by default).
 
 Open it with a text editor of your choice and it should look like this:
 ```env
@@ -55,6 +55,7 @@ Replace `<my-local-ip>` with your local IP address. This will change each time y
 ipconfig getifaddr en0
 ```
 (If that doesn't work, try `en1` instead of `en0`)
+
 Note: try not to share you local IP address with everyone. Just in case. 
 
 As for `<port-number>`, a lot of numbers will work but I will use `4000` for this. 
