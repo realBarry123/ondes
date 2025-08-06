@@ -26,7 +26,7 @@ const createPercussiveSynth = () => {
 
 const createSustainSynth = () => {
     const synth = new Tone.PolySynth(Tone.Synth, {
-        volume: -20,
+        volume: -60,
         oscillator: {
             type: "custom",
             partials: [1, 0, 0.1, 0, 0.1, 0, 0.05, 0, 0, 0, 0, 0]
